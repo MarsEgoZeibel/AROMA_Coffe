@@ -1,0 +1,166 @@
+/* ════════════════════════════════════════════════════════════════
+   RESPONSIVE  —  адаптивность всего сайта.
+   Breakpoints:
+     1200px — широкий планшет / маленький десктоп
+     1024px — планшет (iPad landscape)
+      768px — планшет (iPad portrait)
+      640px — большой мобильный
+      480px — стандартный мобильный
+   ════════════════════════════════════════════════════════════════ */
+
+
+/* ── ≤ 1200px ───────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  /* Gallery: 3 колонки */
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .gallery-item:nth-child(7) { grid-row: span 1; }
+}
+
+
+/* ── ≤ 1024px  (планшет landscape) ─────────────────────────── */
+@media (max-width: 1024px) {
+
+  /* Nav: скрыть ссылки и кнопку, показать бургер */
+  .nav-links                          { display: none; }
+  .nav-actions .btn                   { display: none; }
+  .nav-burger                         { display: flex; }
+
+  /* Features: 2 × 2 */
+  .features-grid                      { grid-template-columns: repeat(2, 1fr); }
+  .feature-item:nth-child(2)          { border-right: none; }
+  .feature-item:nth-child(3)          {
+    border-right: 1px solid var(--border);
+    border-top:   1px solid var(--border);
+  }
+  .feature-item:nth-child(4)          {
+    border-right: none;
+    border-top:   1px solid var(--border);
+  }
+
+  /* About: 1 колонка */
+  .about-inner                        { grid-template-columns: 1fr; }
+  .about-img                          { aspect-ratio: 16 / 9; }
+
+  /* Gallery: 3 колонки */
+  .gallery-grid                       { grid-template-columns: repeat(3, 1fr); }
+  .gallery-item:nth-child(1)          { grid-row: span 2; }
+  .gallery-item:nth-child(4)          { grid-row: span 1; }
+
+  /* Lightbox: кнопки ближе */
+  .lightbox-btn-prev                  { left: -42px; }
+  .lightbox-btn-next                  { right: -42px; }
+
+  /* Testimonials: немного у́же */
+  .slider-wrap                        { max-width: 680px; }
+
+  /* Reservation: одна колонка */
+  .reservation                        { grid-template-columns: 1fr; }
+  .reservation-info                   { padding-bottom: 3rem; }
+
+  /* Contacts: одна колонка */
+  .contacts-inner                     { grid-template-columns: 1fr; }
+  .contacts-map iframe                { height: 320px; }
+
+  /* Footer: 2 × 2 */
+  .footer-grid                        { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+}
+
+
+/* ── ≤ 768px  (планшет portrait) ───────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Slider: полная ширина */
+  .slider-wrap                        { max-width: 100%; }
+  .slide-text                         { font-size: 1.1rem; }
+
+  /* Gallery: 2 колонки */
+  .gallery-grid                       {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 200px;
+  }
+  /* Убираем нестандартные span */
+  .gallery-item:nth-child(1),
+  .gallery-item:nth-child(4),
+  .gallery-item:nth-child(7)          { grid-row: span 1; }
+
+  /* Contacts */
+  .contacts-map iframe                { height: 280px; }
+}
+
+
+/* ── ≤ 640px  (большой мобильный) ──────────────────────────── */
+@media (max-width: 640px) {
+
+  /* Hero */
+  .hero                               { padding-bottom: 4rem; }
+  .hero-scroll                        { display: none; }
+  .hero-actions                       { flex-direction: column; align-items: flex-start; }
+  .hero-actions .btn                  { width: 100%; justify-content: center; }
+
+  /* Features: 1 колонка */
+  .features-grid                      { grid-template-columns: 1fr; }
+  .feature-item                       {
+    border-right:  none !important;
+    border-bottom: 1px solid var(--border);
+  }
+  .feature-item:last-child            { border-bottom: none; }
+
+  /* Menu: 1 колонка */
+  .menu-grid                          { grid-template-columns: 1fr; }
+
+  /* About: уменьшенный разрыв и компактные статы */
+  .about-stats                        { flex-wrap: wrap; gap: 1.25rem; }
+
+  /* Gallery: 2 колонки, меньше высота */
+  .gallery-grid                       {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 160px;
+  }
+
+  /* Лайтбокс: без стрелок (свайп) */
+  .lightbox-btn                       { display: none; }
+
+  /* Slider: без боковых отступов */
+  .slide                              { padding: 0; }
+
+  /* Reservation: одно поле в ряд */
+  .form-row                           { grid-template-columns: 1fr; }
+
+  /* CTA / contacts */
+  .contacts-map iframe                { height: 240px; }
+
+  /* Footer: 1 колонка */
+  .footer-grid                        { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom                      { flex-direction: column; align-items: flex-start; }
+  .footer-legal                       { flex-wrap: wrap; gap: .75rem; }
+
+  /* Modal: одна колонка */
+  .modal                              { grid-template-columns: 1fr; }
+  .modal-img                          { min-height: 220px; height: 220px; }
+  .modal-body                         { padding: 1.4rem 1.2rem; }
+}
+
+
+/* ── ≤ 480px  (узкий мобильный) ────────────────────────────── */
+@media (max-width: 480px) {
+
+  /* Hero: компактный */
+  .hero h1                            { font-size: 2.6rem; }
+
+  /* Gallery: 1 колонка */
+  .gallery-grid                       {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 240px;
+  }
+
+  /* Ticker: немного быстрее */
+  .ticker-track                       { animation-duration: 18s; }
+
+  /* Slider arrows: меньше */
+  .slider-arrow                       { width: 40px; height: 40px; font-size: .8rem; }
+
+  /* Scroll-top: ближе к краю */
+  .scroll-top                         { bottom: 1.2rem; right: 1.2rem; }
+}

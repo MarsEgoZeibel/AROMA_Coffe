@@ -1,0 +1,135 @@
+/* ════════════════════════════════════════════════════════════════
+   CONTACTS  —  контактная информация + карта.
+   Светлый фон, сплит-layout.
+   ════════════════════════════════════════════════════════════════ */
+
+
+/* ── Секция ─────────────────────────────────────────────────── */
+.contacts { background: var(--surface); }
+
+.contacts-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: start;
+  max-width: var(--max-w);
+  margin-inline: auto;
+}
+
+
+/* ── Левая часть: текст и карточки ─────────────────────────── */
+.contacts-info .label { margin-bottom: .7rem; }
+.contacts-info h2     { margin-bottom: 1.5rem; line-height: 1.15; }
+
+/* Список контактных карточек */
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.contact-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.2rem 1.4rem;
+  border: 1px solid var(--border);
+  transition: border-color .2s, background .2s;
+}
+.contact-card:hover {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+/* Иконка */
+.contact-icon {
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .95rem;
+  flex-shrink: 0;
+  color: var(--accent);
+  transition: border-color .2s;
+}
+.contact-card:hover .contact-icon { border-color: var(--accent); }
+
+/* Текст */
+.contact-card-label {
+  font-size: .65rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: .2rem;
+}
+.contact-card-val {
+  font-size: .95rem;
+  font-weight: 500;
+  color: var(--text);
+  display: block;
+}
+.contact-card-val a {
+  color: inherit;
+  text-decoration: none;
+  transition: color .2s;
+}
+.contact-card-val a:hover { color: var(--accent); }
+
+/* Часы работы */
+.hours-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .3rem 1.5rem;
+  margin-top: .4rem;
+}
+.hours-day  { font-size: .83rem; color: var(--text-muted); }
+.hours-time { font-size: .83rem; font-weight: 500; }
+
+
+/* ── Правая часть: карта ────────────────────────────────────── */
+.contacts-map {
+  position: relative;
+}
+.contacts-map iframe {
+  width: 100%;
+  height: 460px;
+  border: 1px solid var(--border);
+  display: block;
+  filter: grayscale(20%) contrast(1.05);  /* лёгкий тонинг */
+}
+
+/* Бейдж поверх карты */
+.map-badge {
+  position: absolute;
+  bottom: 1.2rem;
+  left: 1.2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: .75rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .15rem;
+  box-shadow: var(--shadow-md);
+  pointer-events: none;
+}
+.map-badge-name {
+  font-size: .85rem;
+  font-weight: 700;
+}
+.map-badge-addr {
+  font-size: .75rem;
+  color: var(--text-muted);
+}
+
+
+/* ── Адаптив ────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .contacts-inner { grid-template-columns: 1fr; }
+  .contacts-map iframe { height: 320px; }
+}

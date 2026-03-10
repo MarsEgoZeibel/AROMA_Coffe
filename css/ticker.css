@@ -1,0 +1,47 @@
+/* ════════════════════════════════════════════════════════════════
+   TICKER  —  бегущая строка между hero и features.
+   Создаёт ощущение живого, «дышащего» бренда.
+   ════════════════════════════════════════════════════════════════ */
+
+.ticker {
+  overflow: hidden;
+  background: var(--text);
+  color: var(--white);
+  padding: .85rem 0;
+  white-space: nowrap;
+  border-top:    1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  user-select: none;
+}
+
+/* Трек прокручивается бесконечно — контент продублирован в HTML */
+.ticker-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5rem;
+  animation: tickerScroll 28s linear infinite;
+}
+.ticker-track:hover { animation-play-state: paused; }
+
+/* Одна «плитка» текста */
+.ticker-item {
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  opacity: .65;
+  flex-shrink: 0;
+}
+
+/* Разделитель между плитками */
+.ticker-sep {
+  font-size: .55rem;
+  opacity: .3;
+  flex-shrink: 0;
+}
+
+/* Анимация: сдвигаем на 50% (= одна копия контента) */
+@keyframes tickerScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

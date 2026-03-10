@@ -1,0 +1,211 @@
+/* ════════════════════════════════════════════════════════════════
+   RESERVATION  —  форма бронирования столика.
+   Сплит-layout: тёмная левая панель с информацией + светлая форма.
+   ════════════════════════════════════════════════════════════════ */
+
+
+/* ── Секция ─────────────────────────────────────────────────── */
+.reservation {
+  padding: 0;       /* padding задан внутри панелей */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 600px;
+}
+
+
+/* ── Левая панель: информация ───────────────────────────────── */
+.reservation-info {
+  background: var(--text);
+  color: var(--white);
+  padding: clamp(3rem, 7vw, 6rem) clamp(1.5rem, 5%, 5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.reservation-info .label {
+  color: rgba(255,255,255,.45);
+  margin-bottom: .8rem;
+}
+.reservation-info .label::before { background: rgba(255,255,255,.45); }
+
+.reservation-info h2 {
+  color: var(--white);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.reservation-info p {
+  color: rgba(255,255,255,.55);
+  font-size: .97rem;
+  line-height: 1.7;
+  max-width: 380px;
+  margin-bottom: 2.5rem;
+}
+
+/* Список того, что входит */
+.res-perks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .85rem;
+}
+.res-perks li {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  font-size: .88rem;
+  color: rgba(255,255,255,.6);
+}
+.res-perks li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+
+/* ── Правая панель: форма ───────────────────────────────────── */
+.reservation-form-wrap {
+  background: var(--bg);
+  padding: clamp(3rem, 7vw, 6rem) clamp(1.5rem, 5%, 5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Форма */
+.reservation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+/* Ряд из двух полей */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Группа: label + input */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+
+.form-group label {
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Базовый стиль всех полей ввода */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  font-family: var(--font-body);
+  font-size: .93rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-xs);
+  padding: .8rem 1rem;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  appearance: none;           /* убираем стандартную стрелку у select */
+  width: 100%;
+}
+.form-group input::placeholder { color: var(--border); }
+
+/* Focus: акцентная рамка */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(112, 64, 48, .12);
+}
+
+/* Select: кастомная стрелка */
+.select-wrap { position: relative; }
+.select-wrap::after {
+  content: '▾';
+  position: absolute;
+  right: .9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+  font-size: .85rem;
+}
+.select-wrap select { padding-right: 2.5rem; cursor: pointer; }
+
+
+/* ── Счётчик гостей ─────────────────────────────────────────── */
+.guests-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-xs);
+  overflow: hidden;
+  background: var(--surface);
+  width: fit-content;
+}
+
+.guests-btn {
+  background: none;
+  border: none;
+  width: 44px;
+  height: 44px;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, color .2s;
+}
+.guests-btn:hover { background: var(--accent-light); color: var(--accent); }
+.guests-btn:disabled { opacity: .3; cursor: not-allowed; }
+
+.guests-val {
+  font-size: 1rem;
+  font-weight: 600;
+  min-width: 40px;
+  text-align: center;
+  border-left:  1px solid var(--border);
+  border-right: 1px solid var(--border);
+  padding: 0 .5rem;
+  line-height: 44px;
+}
+
+
+/* ── Кнопка отправки ────────────────────────────────────────── */
+.reservation-form .btn { align-self: flex-start; width: auto; }
+
+/* Состояние успеха */
+.form-success {
+  display: none;               /* показывается JS после отправки */
+  padding: 1.2rem 1.4rem;
+  background: rgba(58, 125, 68, .1);
+  border: 1.5px solid rgba(58, 125, 68, .3);
+  border-radius: var(--r-xs);
+  color: #2d6a38;
+  font-size: .9rem;
+  font-weight: 500;
+}
+
+
+/* ── Адаптив ────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .reservation { grid-template-columns: 1fr; }
+  .reservation-info { min-height: auto; padding-bottom: 3rem; }
+}
+@media (max-width: 540px) {
+  .form-row { grid-template-columns: 1fr; }
+}

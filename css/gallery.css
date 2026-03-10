@@ -1,0 +1,200 @@
+/* ════════════════════════════════════════════════════════════════
+   GALLERY  —  сетка фотографий с фильтром и лайтбоксом.
+   Чередование размеров карточек создаёт динамичный ритм.
+   ════════════════════════════════════════════════════════════════ */
+
+
+/* ── Секция ─────────────────────────────────────────────────── */
+.gallery { background: var(--bg); }
+
+
+/* ── Фильтр ─────────────────────────────────────────────────── */
+.gallery-filter {
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+/* Переиспользуем .btn-tab из buttons.css */
+
+
+/* ── Сетка ──────────────────────────────────────────────────── */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 220px;
+  gap: 6px;
+  max-width: var(--max-w);
+  margin-inline: auto;
+}
+
+/* Некоторые ячейки занимают 2 строки — эффект масонри */
+.gallery-item:nth-child(1) { grid-row: span 2; }
+.gallery-item:nth-child(4) { grid-row: span 2; }
+.gallery-item:nth-child(7) { grid-row: span 2; }
+
+
+/* ── Карточка ───────────────────────────────────────────────── */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--border);   /* fallback пока грузится фото */
+}
+
+/* Фото */
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .5s cubic-bezier(.25, .46, .45, .94);
+}
+.gallery-item:hover img { transform: scale(1.06); }
+
+/* Оверлей с подписью */
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(19, 16, 13, .55);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  opacity: 0;
+  transition: opacity .3s;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+
+/* Иконка лупы */
+.gallery-overlay-icon {
+  width: 42px;
+  height: 42px;
+  border: 1.5px solid rgba(255,255,255,.7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 1rem;
+}
+
+/* Подпись */
+.gallery-overlay-caption {
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.85);
+}
+
+
+/* ── Лайтбокс ───────────────────────────────────────────────── */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  background: rgba(0, 0, 0, .92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+
+  /* Скрыт по умолчанию */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+.lightbox.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Обёртка изображения */
+.lightbox-inner {
+  position: relative;
+  max-width: 1000px;
+  width: 100%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Изображение */
+.lightbox-img {
+  max-width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  display: block;
+  border: 3px solid rgba(255,255,255,.07);
+}
+
+/* Подпись под изображением */
+.lightbox-caption {
+  margin-top: .9rem;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.45);
+}
+
+/* Кнопки навигации */
+.lightbox-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,.1);
+  border: 1.5px solid rgba(255,255,255,.2);
+  color: var(--white);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: background .2s;
+  z-index: 1;
+}
+.lightbox-btn:hover { background: rgba(255,255,255,.22); }
+.lightbox-btn-prev { left: -64px; }
+.lightbox-btn-next { right: -64px; }
+
+/* Кнопка закрытия лайтбокса */
+.lightbox-close {
+  position: absolute;
+  top: -48px;
+  right: 0;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,.6);
+  font-size: 1.6rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: color .2s;
+}
+.lightbox-close:hover { color: var(--white); }
+
+
+/* ── Адаптив ────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  .gallery-item:nth-child(7) { grid-row: span 1; }
+  .lightbox-btn-prev { left: -50px; }
+  .lightbox-btn-next { right: -50px; }
+}
+@media (max-width: 640px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 180px;
+  }
+  .gallery-item:nth-child(1),
+  .gallery-item:nth-child(4),
+  .gallery-item:nth-child(7) { grid-row: span 1; }
+  .lightbox-btn { display: none; }
+}

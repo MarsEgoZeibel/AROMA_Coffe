@@ -1,0 +1,54 @@
+/* ════════════════════════════════════════════════════════════════
+   FEATURES  —  горизонтальная полоска из 4 столбцов с ценностями
+   бренда. Белый фон + тонкие вертикальные разделители.
+   ════════════════════════════════════════════════════════════════ */
+
+
+.features {
+  background:   var(--surface);
+  border-top:    1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0;                 /* padding задаётся внутри ячеек   */
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: var(--max-w);
+  margin-inline: auto;
+}
+
+/* Ячейка */
+.feature-item {
+  padding: 3rem 2.5rem;
+  border-right: 1px solid var(--border);
+  text-align: center;
+  transition: background .2s;
+}
+.feature-item:last-child { border-right: none; }
+.feature-item:hover      { background: var(--accent-light); }
+
+/* Контурная цифра — деликатный декор */
+.feature-num {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--accent);
+  margin-bottom: 1.1rem;
+  display: block;
+  opacity: .4;
+}
+
+.feature-item h3 {
+  font-size: .88rem;
+  font-weight: 600;
+  margin-bottom: .45rem;
+  letter-spacing: .03em;
+}
+.feature-item p {
+  font-size: .83rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}

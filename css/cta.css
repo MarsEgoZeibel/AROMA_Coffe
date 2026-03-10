@@ -1,0 +1,54 @@
+/* ════════════════════════════════════════════════════════════════
+   CTA  —  финальный призыв к действию.
+   Тёмный фон с крупным текстом и двумя кнопками.
+   ════════════════════════════════════════════════════════════════ */
+
+
+.cta {
+  background: var(--text);   /* почти чёрный, не изображение       */
+  color: var(--white);
+  text-align: center;
+}
+
+.cta .label { color: rgba(255, 255, 255, .5); }
+.cta .label::before { background: rgba(255, 255, 255, .5); }
+
+.cta h2 {
+  color: var(--white);
+  margin-top: .7rem;
+  margin-bottom: 1rem;
+}
+
+.cta p {
+  color: rgba(255, 255, 255, .6);
+  font-size: 1.05rem;
+  max-width: 460px;
+  margin-inline: auto;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+
+/* Ряд с часами работы и адресом — перед кнопками */
+.cta-meta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+  font-size: .82rem;
+  color: rgba(255, 255, 255, .45);
+  letter-spacing: .06em;
+}
+/* Точка-разделитель между пунктами */
+.cta-meta span + span::before {
+  content: '·';
+  margin-right: 2rem;
+}
+
+.cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}

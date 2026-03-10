@@ -1,0 +1,96 @@
+/* ════════════════════════════════════════════════════════════════
+   MENU  —  табы-фильтры + сетка карточек.
+   Белые карточки на кремовом фоне, минимальные тени.
+   ════════════════════════════════════════════════════════════════ */
+
+
+/* ── Фон секции ─────────────────────────────────────────────── */
+.menu { background: var(--bg); }
+
+
+/* ── Таб-фильтры ────────────────────────────────────────────── */
+.menu-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: 3rem;
+}
+
+
+/* ── Сетка карточек ─────────────────────────────────────────── */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5px;                 /* межсеточный зазор = тонкая линия */
+  max-width: var(--max-w);
+  margin-inline: auto;
+  background: var(--border);  /* border-цвет между карточками     */
+  border: 1.5px solid var(--border);
+}
+
+
+/* ── Карточка ───────────────────────────────────────────────── */
+.menu-card {
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  transition: background .2s;
+  cursor: default;
+}
+.menu-card:hover { background: #fdfaf7; }
+
+/* Фото */
+.menu-card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  /* Subtle затемнение при hover */
+  transition: filter .4s;
+}
+.menu-card:hover .menu-card-img { filter: brightness(.95); }
+
+/* Тело карточки */
+.menu-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.4rem 1.5rem 1.6rem;
+}
+
+/* Тег категории */
+.menu-tag {
+  font-size:   .63rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: .5rem;
+}
+
+.menu-card-body h3 { font-size: 1rem; margin-bottom: .35rem; }
+
+.menu-card-body p {
+  font-size: .86rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  flex: 1;                    /* растягивает описание, толкает футер вниз */
+  margin-bottom: 1.2rem;
+}
+
+/* Нижняя строка: цена + кнопка */
+.menu-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.price {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -.02em;
+}

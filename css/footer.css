@@ -1,0 +1,129 @@
+/* ════════════════════════════════════════════════════════════════
+   FOOTER  —  нижний колонтитул с соцсетями и ссылками.
+   ════════════════════════════════════════════════════════════════ */
+
+
+/* ── Обёртка ────────────────────────────────────────────────── */
+footer {
+  background: var(--text);
+  color: var(--white);
+  padding: 5rem clamp(1.25rem, 5%, 5rem) 0;
+}
+
+
+/* ── Основная сетка ─────────────────────────────────────────── */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-bottom: 3.5rem;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+
+
+/* ── Бренд-колонка ──────────────────────────────────────────── */
+.footer-brand-logo {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: .9rem;
+  color: var(--white);
+}
+
+.footer-brand-desc {
+  font-size: .875rem;
+  color: rgba(255,255,255,.38);
+  line-height: 1.75;
+  max-width: 260px;
+  margin-bottom: 1.75rem;
+}
+
+/* Иконки соцсетей */
+.social-links {
+  display: flex;
+  gap: .6rem;
+}
+.social-link {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .8rem;
+  color: rgba(255,255,255,.5);
+  text-decoration: none;
+  transition: border-color .2s, color .2s, background .2s;
+}
+.social-link:hover {
+  border-color: var(--accent);
+  color: var(--white);
+  background: var(--accent);
+}
+
+
+/* ── Колонки ссылок ─────────────────────────────────────────── */
+.footer-col h4 {
+  font-size: .63rem;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.28);
+  margin-bottom: 1.35rem;
+}
+
+.footer-col ul         { list-style: none; }
+.footer-col ul li      { margin-bottom: .65rem; }
+.footer-col ul a {
+  font-size: .875rem;
+  color: rgba(255,255,255,.5);
+  text-decoration: none;
+  transition: color .2s;
+}
+.footer-col ul a:hover { color: var(--white); }
+
+
+/* ── Нижняя полоса ──────────────────────────────────────────── */
+.footer-bottom {
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding: 1.75rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .75rem;
+}
+
+.footer-copy {
+  font-size: .78rem;
+  color: rgba(255,255,255,.22);
+}
+
+/* Дополнительные ссылки */
+.footer-legal {
+  display: flex;
+  gap: 1.5rem;
+}
+.footer-legal a {
+  font-size: .78rem;
+  color: rgba(255,255,255,.22);
+  text-decoration: none;
+  transition: color .2s;
+}
+.footer-legal a:hover { color: rgba(255,255,255,.55); }
+
+
+/* ── Адаптив ────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+}
+@media (max-width: 540px) {
+  .footer-grid   { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .footer-legal  { flex-wrap: wrap; gap: 1rem; }
+}

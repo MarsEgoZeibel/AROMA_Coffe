@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AROMA — уютная кофейня в Москве с авторскими напитками, свежей обжаркой и вкусной выпечкой. Бронируйте столик онлайн." />
+  <title>AROMA — Specialty Coffee в Москве</title>
+
+  <!-- ── Google Fonts ─────────────────────────────────────────── -->
+  <!-- Playfair Display — серифный для заголовков                  -->
+  <!-- Inter — чистый sans-serif для основного текста              -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+
+  <!-- ── CSS: дизайн-токены (первые!) ────────────────────────── -->
+  <link rel="stylesheet" href="css/variables.css" />
+
+  <!-- ── CSS: базовые стили ──────────────────────────────────── -->
+  <link rel="stylesheet" href="css/base.css" />
+
+  <!-- ── CSS: компоненты ─────────────────────────────────────── -->
+  <link rel="stylesheet" href="css/buttons.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/modal.css" />
+  <link rel="stylesheet" href="css/scroll-top.css" />
+
+  <!-- ── CSS: секции страницы ────────────────────────────────── -->
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/ticker.css" />
+  <link rel="stylesheet" href="css/features.css" />
+  <link rel="stylesheet" href="css/menu.css" />
+  <link rel="stylesheet" href="css/about.css" />
+  <link rel="stylesheet" href="css/gallery.css" />
+  <link rel="stylesheet" href="css/testimonials.css" />
+  <link rel="stylesheet" href="css/reservation.css" />
+  <link rel="stylesheet" href="css/contacts.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+
+  <!-- ── CSS: адаптивность (всегда последней) ────────────────── -->
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════
+       ПОЛОСА ПРОГРЕССА ЧТЕНИЯ (управляется scroll-top.js)
+  ══════════════════════════════════════════════════════════ -->
+  <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       НАВИГАЦИЯ
+       • Прозрачная поверх hero
+       • Матовое стекло при скролле (.scrolled добавляет nav.js)
+       • На мобильных: бургер открывает шторку .nav-drawer
+  ══════════════════════════════════════════════════════════ -->
+  <nav class="nav" id="navbar" aria-label="Главное меню">
+
+    <a href="#" class="nav-logo">AROMA</a>
+
+    <!-- Ссылки (скрыты на планшетах и мобильных) -->
+    <ul class="nav-links" role="list">
+      <li><a href="#menu">Меню</a></li>
+      <li><a href="#about">О нас</a></li>
+      <li><a href="#gallery">Галерея</a></li>
+      <li><a href="#reviews">Отзывы</a></li>
+      <li><a href="#reservation">Бронирование</a></li>
+      <li><a href="#contacts">Контакты</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="#reservation" class="btn btn-outline-light btn-sm">Забронировать</a>
+      <!-- Бургер — виден только на мобильных (display:none в nav.css) -->
+      <button class="nav-burger" aria-label="Открыть меню" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Мобильная шторка (открывается бургером) -->
+  <div class="nav-drawer" id="navDrawer" aria-hidden="true" role="dialog" aria-label="Навигация">
+    <a href="#menu">Меню</a>
+    <a href="#about">О нас</a>
+    <a href="#gallery">Галерея</a>
+    <a href="#reviews">Отзывы</a>
+    <a href="#reservation">Бронирование</a>
+    <a href="#contacts">Контакты</a>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       HERO  —  полноэкранный открывающий блок
+       Текст снизу-слева (редакционный стиль)
+       Ken-burns на изображении запускается cart.js
+  ══════════════════════════════════════════════════════════ -->
+  <section class="hero" aria-label="Добро пожаловать">
+    <div class="hero-bg" role="img" aria-label="Интерьер кофейни"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Specialty Coffee · Москва · Est. 2019</p>
+      <h1>Кофе,<br>который<br><em>вдохновляет</em></h1>
+      <p class="hero-desc">
+        Отборные зёрна, авторские рецепты и атмосфера,
+        в которую хочется возвращаться снова.
+      </p>
+      <div class="hero-actions">
+        <a href="#menu"        class="btn btn-outline-light">Смотреть меню</a>
+        <a href="#reservation" class="btn btn-outline-light">Забронировать столик</a>
+      </div>
+    </div>
+
+    <!-- Вертикальный индикатор прокрутки -->
+    <div class="hero-scroll" aria-hidden="true">Scroll</div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       TICKER  —  бегущая строка бренда
+       Контент продублирован для бесшовного цикла анимации
+  ══════════════════════════════════════════════════════════ -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <!-- Первая копия -->
+      <span class="ticker-item">Specialty Coffee</span>
+      <span class="ticker-sep">✦</span>
+      <span class="ticker-item">Свежая обжарка</span>
+      <span class="ticker-sep">✦</span>
+      <span class="ticker-item">Est. 2019</span>
+      <span class="ticker-sep">✦</span>
+      <span class="ticker-item">Москва</span>
+      <span class="ticker-sep">✦</span>
+      <span class="ticker-item">Авторские рецепты</span>
+      <span class="ticker-sep">✦</span>
+      <span class="ticker-item">Честная торговля</span>
+      <span class="ticker-sep">✦</span>
+      <!-- Дубликат — для бесшовного зацикливания -->
+      <span class="ticker-item">Specialty Coffee</span>
+      <span class="ticker-sep">✦</span>
+      <span class="ticker-item">Свежая обжарка</span>
+      <span class="ticker-sep">✦</span>
+      <span class="ticker-item">Est. 2019</span>
+      <span class="ticker-sep">✦</span>
+      <span class="ticker-item">Москва</span>
+      <span class="ticker-sep">✦</span>
+      <span class="ticker-item">Авторские рецепты</span>
+      <span class="ticker-sep">✦</span>
+      <span class="ticker-item">Честная торговля</span>
+      <span class="ticker-sep">✦</span>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       FEATURES  —  4 ключевые ценности
+  ══════════════════════════════════════════════════════════ -->
+  <section class="features" aria-label="Наши ценности">
+    <div class="features-grid">
+
+      <article class="feature-item">
+        <span class="feature-num" aria-hidden="true">01</span>
+        <h3>Эко-зёрна</h3>
+        <p>Только сертифицированные фермы Эфиопии и Колумбии с честной торговлей.</p>
+      </article>
+
+      <article class="feature-item">
+        <span class="feature-num" aria-hidden="true">02</span>
+        <h3>Свежая обжарка</h3>
+        <p>Обжариваем небольшими партиями каждые 48 часов — максимум аромата.</p>
+      </article>
+
+      <article class="feature-item">
+        <span class="feature-num" aria-hidden="true">03</span>
+        <h3>Бариста-мастера</h3>
+        <p>Команда с опытом 5+ лет и призовыми местами на чемпионатах России.</p>
+      </article>
+
+      <article class="feature-item">
+        <span class="feature-num" aria-hidden="true">04</span>
+        <h3>Быстро и точно</h3>
+        <p>Готовим за 3 минуты без ущерба для качества — ваше время ценно.</p>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       MENU  —  карточки напитков и еды
+       • Фильтр по категориям (menu.js)
+       • Клик на карточку → модальное окно (modal.js)
+       • data-* атрибуты содержат данные для модала
+  ══════════════════════════════════════════════════════════ -->
+  <section class="menu" id="menu">
+    <div class="section-head">
+      <span class="label">Наше меню</span>
+      <h2>Найдите свой напиток</h2>
+      <p>Классика и авторские позиции — каждую позицию можно изучить подробнее.</p>
+    </div>
+
+    <!-- Табы-фильтры -->
+    <div class="menu-tabs" role="tablist" aria-label="Фильтр меню">
+      <button class="btn-tab active" data-filter="all"    role="tab" aria-selected="true">Все</button>
+      <button class="btn-tab"        data-filter="coffee" role="tab">Кофе</button>
+      <button class="btn-tab"        data-filter="milk"   role="tab">Молочные</button>
+      <button class="btn-tab"        data-filter="cold"   role="tab">Холодные</button>
+      <button class="btn-tab"        data-filter="food"   role="tab">Еда</button>
+    </div>
+
+    <!-- Карточки (class .menu-card-trigger — ловит modal.js) -->
+    <div class="menu-grid container" id="menuGrid">
+
+      <!-- ── Кофе ── -->
+      <article class="menu-card menu-card-trigger" data-cat="coffee"
+        data-img="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=900&q=85"
+        data-tag="Кофе"
+        data-title="Эспрессо"
+        data-desc="Классический эспрессо из бленда эфиопских и бразильских зёрен. Насыщенный, с нотами тёмного шоколада, грецкого ореха и лёгкой кислинкой ягод."
+        data-weight="30 мл"
+        data-cal="5 ккал"
+        data-allergens="Нет"
+        data-price="150">
+        <img class="menu-card-img"
+          src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=600&q=80"
+          alt="Эспрессо" loading="lazy" />
+        <div class="menu-card-body">
+          <span class="menu-tag">Кофе</span>
+          <h3>Эспрессо</h3>
+          <p>Насыщенный, с нотами шоколада и грецкого ореха.</p>
+          <div class="menu-card-footer">
+            <span class="price">150 ₽</span>
+            <button class="btn btn-add">+ Добавить</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card menu-card-trigger" data-cat="coffee"
+        data-img="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=900&q=85"
+        data-tag="Кофе"
+        data-title="Американо"
+        data-desc="Двойной эспрессо, разбавленный горячей водой. Мягкий, длинный напиток без лишней горечи. Идеален с утра или для медленных посиделок."
+        data-weight="180 мл"
+        data-cal="8 ккал"
+        data-allergens="Нет"
+        data-price="180">
+        <img class="menu-card-img"
+          src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&q=80"
+          alt="Американо" loading="lazy" />
+        <div class="menu-card-body">
+          <span class="menu-tag">Кофе</span>
+          <h3>Американо</h3>
+          <p>Мягкий и бодрящий, без лишней горечи.</p>
+          <div class="menu-card-footer">
+            <span class="price">180 ₽</span>
+            <button class="btn btn-add">+ Добавить</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card menu-card-trigger" data-cat="coffee"
+        data-img="https://images.unsplash.com/photo-1529892485617-25f63cd7b1e9?w=900&q=85"
+        data-tag="Кофе"
+        data-title="Фильтр-кофе"
+        data-desc="Медленная заварка через фильтр — раскрывает тончайшие нюансы зерна. Светлая обжарка, яркая кислотность, фруктовый послевкус. Меняется ежемесячно."
+        data-weight="250 мл"
+        data-cal="4 ккал"
+        data-allergens="Нет"
+        data-price="200">
+        <img class="menu-card-img"
+          src="https://images.unsplash.com/photo-1529892485617-25f63cd7b1e9?w=600&q=80"
+          alt="Фильтр-кофе пуровер" loading="lazy" />
+        <div class="menu-card-body">
+          <span class="menu-tag">Кофе</span>
+          <h3>Фильтр-кофе</h3>
+          <p>Пуровер — раскрывает все нюансы зерна.</p>
+          <div class="menu-card-footer">
+            <span class="price">200 ₽</span>
+            <button class="btn btn-add">+ Добавить</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Молочные ── -->
+      <article class="menu-card menu-card-trigger" data-cat="milk"
+        data-img="https://images.unsplash.com/photo-1534778101976-62847782c213?w=900&q=85"
+        data-tag="Молочные"
+        data-title="Латте"
+        data-desc="Двойной эспрессо с паровым молоком и шёлковой микропенкой. Мягкий, нежный, с лёгкой сладостью. Доступен с альтернативным молоком (овсяное, кокосовое)."
+        data-weight="300 мл"
+        data-cal="120 ккал"
+        data-allergens="Молоко"
+        data-price="260">
+        <img class="menu-card-img"
+          src="https://images.unsplash.com/photo-1534778101976-62847782c213?w=600&q=80"
+          alt="Латте с рисунком" loading="lazy" />
+        <div class="menu-card-body">
+          <span class="menu-tag">Молочные</span>
+          <h3>Латте</h3>
+          <p>Нежный эспрессо с паровым молоком и пенкой.</p>
+          <div class="menu-card-footer">
+            <span class="price">260 ₽</span>
+            <button class="btn btn-add">+ Добавить</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card menu-card-trigger" data-cat="milk"
+        data-img="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=900&q=85"
+        data-tag="Молочные"
+        data-title="Капучино"
+        data-desc="Равные части эспрессо, горячего молока и воздушной пены. Классический баланс — крепость кофе и нежность молока. Стандарт итальянского бариста."
+        data-weight="180 мл"
+        data-cal="90 ккал"
+        data-allergens="Молоко"
+        data-price="240">
+        <img class="menu-card-img"
+          src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=600&q=80"
+          alt="Капучино" loading="lazy" />
+        <div class="menu-card-body">
+          <span class="menu-tag">Молочные</span>
+          <h3>Капучино</h3>
+          <p>Классика с воздушной микропенкой.</p>
+          <div class="menu-card-footer">
+            <span class="price">240 ₽</span>
+            <button class="btn btn-add">+ Добавить</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card menu-card-trigger" data-cat="milk"
+        data-img="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=900&q=85"
+        data-tag="Молочные"
+        data-title="Флэт Уайт"
+        data-desc="Двойной риcтретто и небольшое количество бархатистого молока. Крепче латте, нежнее капучино. Австралийская классика для настоящих кофеманов."
+        data-weight="160 мл"
+        data-cal="100 ккал"
+        data-allergens="Молоко"
+        data-price="270">
+        <img class="menu-card-img"
+          src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&q=80"
+          alt="Флэт Уайт" loading="lazy" />
+        <div class="menu-card-body">
+          <span class="menu-tag">Молочные</span>
+          <h3>Флэт Уайт</h3>
+          <p>Двойной ристретто с бархатистым молоком.</p>
+          <div class="menu-card-footer">
+            <span class="price">270 ₽</span>
+            <button class="btn btn-add">+ Добавить</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Холодные ── -->
+      <article class="menu-card menu-card-trigger" data-cat="cold"
+        data-img="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=900&q=85"
+        data-tag="Холодные"
+        data-title="Cold Brew"
+        data-desc="Зёрна завариваются в холодной воде 24 часа. Результат — шёлковый, бархатистый кофе без горечи с долгим шоколадным послевкусием. Подаётся со льдом."
+        data-weight="300 мл"
+        data-cal="15 ккал"
+        data-allergens="Нет"
+        data-price="290">
+        <img class="menu-card-img"
+          src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80"
+          alt="Cold Brew со льдом" loading="lazy" />
+        <div class="menu-card-body">
+          <span class="menu-tag">Холодные</span>
+          <h3>Cold Brew</h3>
+          <p>24 часа холодного заваривания — шёлковый вкус.</p>
+          <div class="menu-card-footer">
+            <span class="price">290 ₽</span>
+            <button class="btn btn-add">+ Добавить</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card menu-card-trigger" data-cat="cold"
+        data-img="https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=900&q=85"
+        data-tag="Холодные"
+        data-title="Раф карамельный"
+        data-desc="Эспрессо, сливки и карамельный сироп — взбитые вместе. Сливочный, нежный, с тёплым ароматом ванили. Любимец постоянных гостей уже три года подряд."
+        data-weight="280 мл"
+        data-cal="210 ккал"
+        data-allergens="Молоко"
+        data-price="310">
+        <img class="menu-card-img"
+          src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=600&q=80"
+          alt="Раф карамельный" loading="lazy" />
+        <div class="menu-card-body">
+          <span class="menu-tag">Холодные</span>
+          <h3>Раф карамельный</h3>
+          <p>Сливочный, с карамелью и ванилью.</p>
+          <div class="menu-card-footer">
+            <span class="price">310 ₽</span>
+            <button class="btn btn-add">+ Добавить</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card menu-card-trigger" data-cat="cold"
+        data-img="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=900&q=85"
+        data-tag="Холодные"
+        data-title="Матча Латте"
+        data-desc="Церемониальная японская матча, взбитая с паровым молоком. Насыщенный зелёный вкус с ореховой сладостью. Богата антиоксидантами — альтернатива кофе."
+        data-weight="280 мл"
+        data-cal="130 ккал"
+        data-allergens="Молоко"
+        data-price="290">
+        <img class="menu-card-img"
+          src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&q=80"
+          alt="Матча Латте" loading="lazy" />
+        <div class="menu-card-body">
+          <span class="menu-tag">Холодные</span>
+          <h3>Матча Латте</h3>
+          <p>Японская матча с бархатистым молоком.</p>
+          <div class="menu-card-footer">
+            <span class="price">290 ₽</span>
+            <button class="btn btn-add">+ Добавить</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Еда ── -->
+      <article class="menu-card menu-card-trigger" data-cat="food"
+        data-img="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=900&q=85"
+        data-tag="Еда"
+        data-title="Круассан с миндалём"
+        data-desc="Слоёный круассан французского типа с миндальным кремом франгипан и дроблёным миндалём сверху. Выпекается каждое утро — хрустящий снаружи, нежный внутри."
+        data-weight="110 г"
+        data-cal="380 ккал"
+        data-allergens="Глютен, молоко, яйца, орехи"
+        data-price="190">
+        <img class="menu-card-img"
+          src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80"
+          alt="Круассан с миндалём" loading="lazy" />
+        <div class="menu-card-body">
+          <span class="menu-tag">Еда</span>
+          <h3>Круассан с миндалём</h3>
+          <p>Слоёный, хрустящий, свежей выпечки.</p>
+          <div class="menu-card-footer">
+            <span class="price">190 ₽</span>
+            <button class="btn btn-add">+ Добавить</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card menu-card-trigger" data-cat="food"
+        data-img="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=900&q=85"
+        data-tag="Еда"
+        data-title="Чизкейк Нью-Йорк"
+        data-desc="Классический американский чизкейк на тонком основании из крекера Грэхем. Сливочный, плотный, без лишних добавок. Подаётся с соусом из свежих ягод."
+        data-weight="150 г"
+        data-cal="420 ккал"
+        data-allergens="Глютен, молоко, яйца"
+        data-price="350">
+        <img class="menu-card-img"
+          src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=80"
+          alt="Чизкейк Нью-Йорк" loading="lazy" />
+        <div class="menu-card-body">
+          <span class="menu-tag">Еда</span>
+          <h3>Чизкейк Нью-Йорк</h3>
+          <p>Классический рецепт — нежный и кремовый.</p>
+          <div class="menu-card-footer">
+            <span class="price">350 ₽</span>
+            <button class="btn btn-add">+ Добавить</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card menu-card-trigger" data-cat="food"
+        data-img="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=900&q=85"
+        data-tag="Еда"
+        data-title="Брауни с орехами"
+        data-desc="Плотный шоколадный брауни на бельгийском тёмном шоколаде 70% с грецкими орехами. Хрустящая корочка снаружи, тягучая сердцевина внутри. Идеален с латте."
+        data-weight="90 г"
+        data-cal="340 ккал"
+        data-allergens="Глютен, молоко, яйца, орехи"
+        data-price="240">
+        <img class="menu-card-img"
+          src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&q=80"
+          alt="Брауни с орехами" loading="lazy" />
+        <div class="menu-card-body">
+          <span class="menu-tag">Еда</span>
+          <h3>Брауни с орехами</h3>
+          <p>Бельгийский шоколад 70%, тягучая сердцевина.</p>
+          <div class="menu-card-footer">
+            <span class="price">240 ₽</span>
+            <button class="btn btn-add">+ Добавить</button>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /menu-grid -->
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       ABOUT  —  история и ценности кофейни
+       Статистика анимируется counter.js (data-target, data-suffix)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <!-- Изображение -->
+      <img class="about-img"
+        src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=900&q=85"
+        alt="Интерьер кофейни AROMA"
+        loading="lazy" />
+
+      <!-- Текст -->
+      <div class="about-text">
+        <span class="label">О нас</span>
+        <h2>Больше, чем просто кофейня</h2>
+        <p>
+          Мы открылись в 2019 году с одной целью — создать место,
+          где каждый чувствует себя как дома. Здесь нет спешки:
+          только хороший кофе, тихая музыка и настоящие разговоры.
+        </p>
+        <p>
+          Каждый месяц мы выбираем новые зёрна со всего мира
+          и создаём авторские напитки, которые удивляют даже
+          опытных кофеманов. Наш стандарт — Specialty Coffee
+          с оценкой 85+ по шкале SCA.
+        </p>
+
+        <!-- Статистика: data-target и data-suffix читает counter.js -->
+        <div class="about-stats">
+          <div>
+            <span class="stat-num" data-target="6" data-suffix="+">6+</span>
+            <span class="stat-lbl">лет опыта</span>
+          </div>
+          <div>
+            <span class="stat-num" data-target="40" data-suffix="+">40+</span>
+            <span class="stat-lbl">позиций в меню</span>
+          </div>
+          <div>
+            <span class="stat-num" data-target="15" data-suffix="k">15k</span>
+            <span class="stat-lbl">довольных гостей</span>
+          </div>
+        </div>
+
+        <a href="#reservation" class="btn btn-dark">Забронировать столик</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       GALLERY  —  фотогалерея
+       • Фильтр по категориям (gallery.js)
+       • Клик → лайтбокс (gallery.js)
+       • data-gcat определяет категорию
+  ══════════════════════════════════════════════════════════ -->
+  <section class="gallery" id="gallery">
+    <div class="section-head">
+      <span class="label">Галерея</span>
+      <h2>Моменты, которые запоминаются</h2>
+      <p>Атмосфера, напитки и детали — всё, из чего складывается наш характер.</p>
+    </div>
+
+    <!-- Фильтр -->
+    <div class="gallery-filter">
+      <button class="btn-tab active" data-gfilter="all">Все</button>
+      <button class="btn-tab" data-gfilter="interior">Интерьер</button>
+      <button class="btn-tab" data-gfilter="drinks">Напитки</button>
+      <button class="btn-tab" data-gfilter="food">Еда</button>
+    </div>
+
+    <!-- Сетка (некоторые элементы span 2 строки — задано в gallery.css) -->
+    <div class="gallery-grid container">
+
+      <div class="gallery-item" data-gcat="drinks">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&q=80" alt="Латте-арт" loading="lazy" />
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon">⊕</div>
+          <span class="gallery-overlay-caption">Латте-арт</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-gcat="interior">
+        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80" alt="Фасад кофейни" loading="lazy" />
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon">⊕</div>
+          <span class="gallery-overlay-caption">Фасад</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-gcat="drinks">
+        <img src="https://images.unsplash.com/photo-1529892485617-25f63cd7b1e9?w=800&q=80" alt="Пуровер" loading="lazy" />
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon">⊕</div>
+          <span class="gallery-overlay-caption">Пуровер</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-gcat="interior">
+        <img src="https://images.unsplash.com/photo-1521302080334-4bebac2763a6?w=800&q=80" alt="Уютный зал" loading="lazy" />
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon">⊕</div>
+          <span class="gallery-overlay-caption">Зал</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-gcat="food">
+        <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800&q=80" alt="Выпечка" loading="lazy" />
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon">⊕</div>
+          <span class="gallery-overlay-caption">Выпечка</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-gcat="drinks">
+        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&q=80" alt="Кофейные зёрна" loading="lazy" />
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon">⊕</div>
+          <span class="gallery-overlay-caption">Зёрна</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-gcat="interior">
+        <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?w=800&q=80" alt="Барная стойка" loading="lazy" />
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon">⊕</div>
+          <span class="gallery-overlay-caption">Барная стойка</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-gcat="drinks">
+        <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=800&q=80" alt="Cold Brew" loading="lazy" />
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon">⊕</div>
+          <span class="gallery-overlay-caption">Cold Brew</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-gcat="food">
+        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&q=80" alt="Чизкейк" loading="lazy" />
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon">⊕</div>
+          <span class="gallery-overlay-caption">Чизкейк</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-gcat="interior">
+        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80" alt="Интерьер" loading="lazy" />
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon">⊕</div>
+          <span class="gallery-overlay-caption">Интерьер</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-gcat="food">
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80" alt="Круассан" loading="lazy" />
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon">⊕</div>
+          <span class="gallery-overlay-caption">Круассан</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-gcat="drinks">
+        <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?w=800&q=80" alt="Латте" loading="lazy" />
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon">⊕</div>
+          <span class="gallery-overlay-caption">Латте</span>
+        </div>
+      </div>
+
+    </div><!-- /gallery-grid -->
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       TESTIMONIALS  —  слайдер отзывов
+       Управляется slider.js: стрелки, точки, свайп, автопрокрутка
+  ══════════════════════════════════════════════════════════ -->
+  <section class="testimonials" id="reviews">
+    <div class="section-head">
+      <span class="label">Отзывы</span>
+      <h2>Что говорят гости</h2>
+      <p>Нам важно ваше мнение — слушаем каждого.</p>
+    </div>
+
+    <!-- Обёртка слайдера -->
+    <div class="slider-wrap">
+      <div class="slider-track">
+
+        <!-- Слайд 1 -->
+        <div class="slide">
+          <div class="slide-quote" aria-hidden="true">&ldquo;</div>
+          <p class="slide-text">
+            Лучший латте в городе, без преувеличения. Хожу сюда каждое утро
+            уже два года — ни разу не было плохой чашки. Бариста помнят моё имя и заказ.
+          </p>
+          <div class="slide-author">
+            <img class="slide-avatar" src="https://i.pravatar.cc/80?img=12" alt="Анна К." loading="lazy" />
+            <div>
+              <span class="slide-name">Анна К.</span>
+              <span class="slide-role">Постоянный гость · 2 года</span>
+              <div class="slide-stars" aria-label="Оценка 5 из 5">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Слайд 2 -->
+        <div class="slide">
+          <div class="slide-quote" aria-hidden="true">&ldquo;</div>
+          <p class="slide-text">
+            Атмосфера невероятная — уютно, тихо, можно работать часами.
+            Wi-Fi быстрый, розетки везде. И каждый месяц новые авторские напитки.
+            Никогда не надоедает.
+          </p>
+          <div class="slide-author">
+            <img class="slide-avatar" src="https://i.pravatar.cc/80?img=33" alt="Михаил Р." loading="lazy" />
+            <div>
+              <span class="slide-name">Михаил Р.</span>
+              <span class="slide-role">Дизайнер-фрилансер</span>
+              <div class="slide-stars" aria-label="Оценка 5 из 5">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Слайд 3 -->
+        <div class="slide">
+          <div class="slide-quote" aria-hidden="true">&ldquo;</div>
+          <p class="slide-text">
+            Cold brew здесь — это что-то особенное. Никогда раньше не любила
+            кофе без молока, но их вариант просто шедевр. Рассказала всем подругам.
+          </p>
+          <div class="slide-author">
+            <img class="slide-avatar" src="https://i.pravatar.cc/80?img=47" alt="Дарья М." loading="lazy" />
+            <div>
+              <span class="slide-name">Дарья М.</span>
+              <span class="slide-role">Фуд-блогер</span>
+              <div class="slide-stars" aria-label="Оценка 5 из 5">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Слайд 4 -->
+        <div class="slide">
+          <div class="slide-quote" aria-hidden="true">&ldquo;</div>
+          <p class="slide-text">
+            Провёл здесь деловой завтрак — всё прошло идеально. Тихо, кофе отличный,
+            персонал ненавязчивый. Чизкейк вообще лучший, что я пробовал в Москве.
+          </p>
+          <div class="slide-author">
+            <img class="slide-avatar" src="https://i.pravatar.cc/80?img=15" alt="Алексей В." loading="lazy" />
+            <div>
+              <span class="slide-name">Алексей В.</span>
+              <span class="slide-role">Предприниматель</span>
+              <div class="slide-stars" aria-label="Оценка 5 из 5">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /slider-track -->
+    </div><!-- /slider-wrap -->
+
+    <!-- Стрелки -->
+    <div class="slider-arrows">
+      <button class="slider-arrow" id="sliderPrev" aria-label="Предыдущий отзыв">&#8592;</button>
+      <button class="slider-arrow" id="sliderNext" aria-label="Следующий отзыв">&#8594;</button>
+    </div>
+
+    <!-- Точки-индикаторы -->
+    <div class="slider-dots" role="tablist" aria-label="Слайды отзывов">
+      <button class="dot active" role="tab" aria-label="Отзыв 1"></button>
+      <button class="dot"        role="tab" aria-label="Отзыв 2"></button>
+      <button class="dot"        role="tab" aria-label="Отзыв 3"></button>
+      <button class="dot"        role="tab" aria-label="Отзыв 4"></button>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       RESERVATION  —  форма бронирования столика
+       Логика: reservation.js (счётчик, маска, отправка)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="reservation" id="reservation">
+
+    <!-- Левая панель: информация -->
+    <div class="reservation-info">
+      <span class="label">Бронирование</span>
+      <h2>Забронируйте<br>столик</h2>
+      <p>
+        Зарезервируйте место заранее — особенно в выходные.
+        Подтверждение придёт на телефон в течение 15 минут.
+      </p>
+      <ul class="res-perks">
+        <li>Бронирование за 2 часа до визита</li>
+        <li>Столик удерживается 15 минут</li>
+        <li>Детские стулья по запросу</li>
+        <li>Место для ноутбука и розетки</li>
+        <li>Возможен корпоратив от 10 человек</li>
+      </ul>
+    </div>
+
+    <!-- Правая панель: форма -->
+    <div class="reservation-form-wrap">
+
+      <form class="reservation-form" id="reservationForm" novalidate>
+
+        <!-- Имя + телефон -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="resName">Ваше имя</label>
+            <input type="text" id="resName" name="name"
+              placeholder="Иван Иванов" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="resPhone">Телефон</label>
+            <input type="tel" id="resPhone" name="phone"
+              placeholder="+7 (___) ___-__-__" required autocomplete="tel" />
+          </div>
+        </div>
+
+        <!-- Дата + время -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="resDate">Дата</label>
+            <input type="date" id="resDate" name="date" required />
+          </div>
+          <div class="form-group">
+            <label for="resTime">Время</label>
+            <div class="select-wrap">
+              <select id="resTime" name="time" required>
+                <option value="" disabled selected>Выберите время</option>
+                <option>08:00</option><option>08:30</option>
+                <option>09:00</option><option>09:30</option>
+                <option>10:00</option><option>10:30</option>
+                <option>11:00</option><option>11:30</option>
+                <option>12:00</option><option>12:30</option>
+                <option>13:00</option><option>13:30</option>
+                <option>14:00</option><option>14:30</option>
+                <option>15:00</option><option>15:30</option>
+                <option>16:00</option><option>16:30</option>
+                <option>17:00</option><option>17:30</option>
+                <option>18:00</option><option>18:30</option>
+                <option>19:00</option><option>19:30</option>
+                <option>20:00</option><option>20:30</option>
+                <option>21:00</option><option>21:30</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Количество гостей (кастомный счётчик) -->
+        <div class="form-group">
+          <label>Количество гостей</label>
+          <div class="guests-wrap">
+            <button type="button" class="guests-btn" id="guestDec" aria-label="Уменьшить">−</button>
+            <span class="guests-val" id="guestVal" aria-live="polite">2</span>
+            <button type="button" class="guests-btn" id="guestInc" aria-label="Увеличить">+</button>
+          </div>
+          <!-- Скрытое поле для отправки реального значения -->
+          <input type="hidden" name="guests" id="guestCount" value="2" />
+        </div>
+
+        <!-- Комментарий -->
+        <div class="form-group">
+          <label for="resComment">Пожелания (необязательно)</label>
+          <input type="text" id="resComment" name="comment"
+            placeholder="Детский стул, аллергия, особый повод…" />
+        </div>
+
+        <!-- Кнопка отправки -->
+        <button type="submit" class="btn btn-dark">Забронировать столик</button>
+
+      </form>
+
+      <!-- Сообщение об успехе (скрыто, показывается JS после отправки) -->
+      <div class="form-success" id="formSuccess" role="alert">
+        ✓ Столик забронирован! Мы позвоним вам в течение 15 минут для подтверждения.
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       CONTACTS  —  контактная информация + карта
+  ══════════════════════════════════════════════════════════ -->
+  <section class="contacts" id="contacts">
+    <div class="contacts-inner">
+
+      <!-- Левая часть: адрес, телефон, email, часы -->
+      <div class="contacts-info">
+        <span class="label">Контакты</span>
+        <h2>Как нас найти</h2>
+
+        <div class="contact-list">
+
+          <div class="contact-card">
+            <div class="contact-icon" aria-hidden="true">📍</div>
+            <div>
+              <span class="contact-card-label">Адрес</span>
+              <span class="contact-card-val">ул. Кофейная, 12, Москва, 107045</span>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon" aria-hidden="true">📞</div>
+            <div>
+              <span class="contact-card-label">Телефон</span>
+              <span class="contact-card-val">
+                <a href="tel:+78001234567">+7 800 123-45-67</a>
+              </span>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon" aria-hidden="true">✉</div>
+            <div>
+              <span class="contact-card-label">Email</span>
+              <span class="contact-card-val">
+                <a href="mailto:hello@redizain.coffee">hello@redizain.coffee</a>
+              </span>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon" aria-hidden="true">🕐</div>
+            <div>
+              <span class="contact-card-label">Часы работы</span>
+              <div class="hours-grid">
+                <span class="hours-day">Пн – Пт</span>
+                <span class="hours-time">08:00 – 22:00</span>
+                <span class="hours-day">Сб – Вс</span>
+                <span class="hours-time">09:00 – 23:00</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /contact-list -->
+      </div><!-- /contacts-info -->
+
+      <!-- Правая часть: встроенная карта -->
+      <div class="contacts-map">
+        <!-- OpenStreetMap — не требует API-ключа -->
+        <iframe
+          src="https://www.openstreetmap.org/export/embed.html?bbox=37.5973%2C55.7457%2C37.6773%2C55.7757&layer=mapnik&marker=55.7608%2C37.6323"
+          title="Карта расположения кофейни"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <!-- Бейдж поверх карты -->
+        <div class="map-badge" aria-hidden="true">
+          <span class="map-badge-name">AROMA</span>
+          <span class="map-badge-addr">ул. Кофейная, 12</span>
+        </div>
+      </div>
+
+    </div><!-- /contacts-inner -->
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-grid">
+
+      <!-- Бренд -->
+      <div>
+        <span class="footer-brand-logo">AROMA</span>
+        <p class="footer-brand-desc">
+          Уютная кофейня с авторскими напитками и свежей выпечкой.
+          Создаём атмосферу, в которую хочется возвращаться.
+        </p>
+        <!-- Иконки соцсетей -->
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Instagram">In</a>
+          <a href="#" class="social-link" aria-label="VKontakte">Вк</a>
+          <a href="#" class="social-link" aria-label="Telegram">Tg</a>
+          <a href="#" class="social-link" aria-label="YouTube">Yt</a>
+        </div>
+      </div>
+
+      <!-- Меню -->
+      <nav class="footer-col" aria-label="Меню">
+        <h4>Меню</h4>
+        <ul>
+          <li><a href="#menu">Кофе</a></li>
+          <li><a href="#menu">Молочные напитки</a></li>
+          <li><a href="#menu">Холодные напитки</a></li>
+          <li><a href="#menu">Еда и выпечка</a></li>
+        </ul>
+      </nav>
+
+      <!-- Компания -->
+      <nav class="footer-col" aria-label="Компания">
+        <h4>Компания</h4>
+        <ul>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#gallery">Галерея</a></li>
+          <li><a href="#reviews">Отзывы</a></li>
+          <li><a href="#">Вакансии</a></li>
+          <li><a href="#">Франшиза</a></li>
+        </ul>
+      </nav>
+
+      <!-- Контакты -->
+      <address class="footer-col" style="font-style: normal;">
+        <h4>Контакты</h4>
+        <ul>
+          <li><a href="#">ул. Кофейная, 12, Москва</a></li>
+          <li><a href="tel:+78001234567">+7 800 123-45-67</a></li>
+          <li><a href="mailto:hello@redizain.coffee">hello@redizain.coffee</a></li>
+          <li><a href="#">Пн–Пт: 8:00–22:00</a></li>
+          <li><a href="#">Сб–Вс: 9:00–23:00</a></li>
+        </ul>
+      </address>
+
+    </div><!-- /footer-grid -->
+
+    <!-- Нижняя полоса -->
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 AROMA. Все права защищены.</span>
+      <div class="footer-legal">
+        <a href="#">Политика конфиденциальности</a>
+        <a href="#">Публичная оферта</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       МОДАЛЬНОЕ ОКНО (скрыто — открывается modal.js)
+  ══════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Подробная информация о блюде">
+    <div class="modal">
+      <!-- Кнопка закрытия -->
+      <button class="modal-close" id="modalClose" aria-label="Закрыть">✕</button>
+
+      <!-- Изображение -->
+      <img class="modal-img" id="modalImg" src="" alt="" />
+
+      <!-- Информация -->
+      <div class="modal-body">
+        <span class="modal-tag" id="modalTag"></span>
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <p class="modal-desc" id="modalDesc"></p>
+
+        <!-- Мета-данные -->
+        <div class="modal-meta">
+          <div class="modal-meta-item">
+            <span class="modal-meta-label">Объём / Вес</span>
+            <span class="modal-meta-val" id="modalWeight"></span>
+          </div>
+          <div class="modal-meta-item">
+            <span class="modal-meta-label">Калорийность</span>
+            <span class="modal-meta-val" id="modalCal"></span>
+          </div>
+          <div class="modal-meta-item" style="grid-column: span 2;">
+            <span class="modal-meta-label">Аллергены</span>
+            <span class="modal-meta-val" id="modalAlrg"></span>
+          </div>
+        </div>
+
+        <!-- Цена и кнопка -->
+        <div class="modal-footer">
+          <span class="modal-price" id="modalPrice"></span>
+          <button class="btn btn-dark" id="modalAddBtn">+ Добавить в заказ</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       ЛАЙТБОКС ГАЛЕРЕИ (скрыт — открывается gallery.js)
+  ══════════════════════════════════════════════════════════ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фото">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" id="lbClose" aria-label="Закрыть">&times;</button>
+      <button class="lightbox-btn lightbox-btn-prev" id="lbPrev" aria-label="Предыдущее фото">&#8592;</button>
+      <img class="lightbox-img" id="lbImg" src="" alt="" />
+      <button class="lightbox-btn lightbox-btn-next" id="lbNext" aria-label="Следующее фото">&#8594;</button>
+      <p class="lightbox-caption" id="lbCaption"></p>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       КНОПКА «НАВЕРХ»
+  ══════════════════════════════════════════════════════════ -->
+  <button class="scroll-top" id="scrollTop" aria-label="Вернуться наверх">↑</button>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       СКРИПТЫ  —  порядок важен:
+       1. nav.js        — шапка и мобильное меню
+       2. menu.js       — фильтр карточек
+       3. modal.js      — модальные окна
+       4. cart.js       — кнопки «Добавить» + ken-burns hero
+       5. slider.js     — слайдер отзывов
+       6. gallery.js    — галерея и лайтбокс
+       7. counter.js    — анимированные числа в About
+       8. reservation.js — форма бронирования
+       9. scroll-top.js — кнопка «Наверх» и прогресс-бар
+  ══════════════════════════════════════════════════════════ -->
+  <script src="js/nav.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/slider.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/counter.js"></script>
+  <script src="js/reservation.js"></script>
+  <script src="js/scroll-top.js"></script>
+
+</body>
+</html>

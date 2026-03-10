@@ -1,0 +1,155 @@
+/* ════════════════════════════════════════════════════════════════
+   TESTIMONIALS  —  слайдер отзывов.
+   Один отзыв в центре, навигация стрелками и точками.
+   ════════════════════════════════════════════════════════════════ */
+
+
+/* ── Секция ─────────────────────────────────────────────────── */
+.testimonials {
+  background: var(--text);   /* тёмный фон — контраст с соседними секциями */
+  color: var(--white);
+  overflow: hidden;
+}
+.testimonials .section-head h2 { color: var(--white); }
+.testimonials .section-head p  { color: rgba(255,255,255,.45); }
+.testimonials .label {
+  color: rgba(255,255,255,.4);
+}
+.testimonials .label::before { background: rgba(255,255,255,.4); }
+
+
+/* ── Слайдер ────────────────────────────────────────────────── */
+.slider-wrap {
+  position: relative;
+  overflow: hidden;
+  max-width: 860px;
+  margin-inline: auto;
+}
+
+/* Трек: все слайды в ряд */
+.slider-track {
+  display: flex;
+  transition: transform .55s cubic-bezier(.25, .46, .45, .94);
+}
+
+
+/* ── Один слайд ─────────────────────────────────────────────── */
+.slide {
+  flex: 0 0 100%;            /* каждый слайд = 100% ширины трека  */
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Большая кавычка */
+.slide-quote {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  line-height: .6;
+  color: var(--accent);
+  opacity: .35;
+  margin-bottom: 1.5rem;
+  user-select: none;
+}
+
+/* Текст отзыва */
+.slide-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-style: italic;
+  line-height: 1.55;
+  color: rgba(255,255,255,.88);
+  max-width: 680px;
+  margin-bottom: 2rem;
+}
+
+/* Автор */
+.slide-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.slide-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,.15);
+}
+.slide-name {
+  font-weight: 600;
+  font-size: .9rem;
+  color: var(--white);
+  display: block;
+  text-align: left;
+}
+.slide-role {
+  font-size: .75rem;
+  color: rgba(255,255,255,.4);
+  display: block;
+  text-align: left;
+  margin-top: .15rem;
+}
+.slide-stars {
+  display: flex;
+  gap: 2px;
+  margin-top: .35rem;
+  color: var(--accent);
+  font-size: .75rem;
+}
+
+
+/* ── Стрелки навигации ──────────────────────────────────────── */
+.slider-arrows {
+  display: flex;
+  justify-content: center;
+  gap: .75rem;
+  margin-top: 2.5rem;
+}
+
+.slider-arrow {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,.2);
+  background: transparent;
+  color: rgba(255,255,255,.6);
+  font-size: .9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.slider-arrow:hover {
+  background: rgba(255,255,255,.1);
+  border-color: rgba(255,255,255,.4);
+  color: var(--white);
+}
+.slider-arrow:disabled { opacity: .25; cursor: not-allowed; }
+
+
+/* ── Точки-индикаторы ───────────────────────────────────────── */
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+  margin-top: 1.25rem;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.25);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background .2s, transform .2s;
+}
+.dot.active {
+  background: var(--accent);
+  transform: scale(1.4);
+}

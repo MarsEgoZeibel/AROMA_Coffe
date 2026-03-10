@@ -1,0 +1,96 @@
+/* ════════════════════════════════════════════════════════════════
+   BASE  —  сброс, глобальные стили, типографика, вспомогательные
+   классы сетки. Подключается после variables.css.
+   ════════════════════════════════════════════════════════════════ */
+
+
+/* ── Сброс ──────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* БАГ-ФИКС: атрибут [hidden] не работает когда у элемента
+   задан display через CSS (например display:flex у .menu-card).
+   !important гарантирует что [hidden] всегда скрывает элемент. */
+[hidden] { display: none !important; }
+
+/* ── Документ ───────────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background:  var(--bg);
+  color:       var(--text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;  /* сглаживание на macOS/iOS  */
+  text-rendering: optimizeLegibility;
+}
+
+img { display: block; max-width: 100%; }
+
+a { color: inherit; text-decoration: none; }
+
+
+/* ── Типографика ────────────────────────────────────────────── */
+
+/* Серифные заголовки — создают редакционное, «кофейное» ощущение */
+h1, h2 {
+  font-family: var(--font-display);
+  line-height: 1.08;
+  font-weight: 700;
+}
+h1 { font-size: clamp(2.8rem, 7vw,  5.5rem); }
+h2 { font-size: clamp(1.9rem, 4vw,  3rem);   }
+h3 { font-size: .95rem; font-weight: 600; letter-spacing: .02em; }
+
+/* Маленький лейбл-тег над заголовком секции */
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  font-family: var(--font-body);
+  font-size:   .68rem;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+/* Короткая линия слева от лейбла */
+.label::before {
+  content: '';
+  display: inline-block;
+  width:  22px;
+  height: 1px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+
+/* ── Сетка / контейнер ──────────────────────────────────────── */
+
+/* Ограничивает ширину и центрирует контент */
+.container {
+  max-width: var(--max-w);
+  margin-inline: auto;
+}
+
+/* Padding для секций */
+section { padding: var(--section-pad); }
+
+/* Центрированный заголовок секции */
+.section-head {
+  text-align: center;
+  max-width: 580px;
+  margin-inline: auto;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.section-head .label { justify-content: center; margin-bottom: .7rem; }
+.section-head h2 { line-height: 1.15; }
+.section-head p  {
+  margin-top: .8rem;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
